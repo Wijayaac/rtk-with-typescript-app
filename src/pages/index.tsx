@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { decrement, increment, incrementByAmount, selectCount } from '../features/counter/counterSlice'
+import { decrement, increment, incrementByAmount, selectCount } from '../features/counter'
 
 
 const IndexPage: React.FC = () => {
@@ -15,7 +15,9 @@ const IndexPage: React.FC = () => {
 
             <div>
                 <input type="number" value={incrementAmount} onChange={(e) => setIncrementAmount(Number(e.target.value))} />
-                <button onClick={() => dispatch(incrementByAmount(Number(incrementAmount)))} >Increment By Amount</button>
+                <button
+                    onClick={() => dispatch(incrementByAmount(Number(incrementAmount)))}
+                >Increment By Amount</button>
             </div>
             <div>
                 <button onClick={() => dispatch(decrement())} >Decrement by 1</button>

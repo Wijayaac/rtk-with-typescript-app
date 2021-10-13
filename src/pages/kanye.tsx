@@ -1,10 +1,10 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
-import { getKanyeQuote, selectKanye } from '../features/kanye/kanyeSlice'
+import { getKanyeQuote, kanyeQuoteSelector } from '../features/kanye'
 
 const kanye: React.FC = () => {
     const dispatch = useAppDispatch()
-    const { data, pending, error } = useAppSelector(selectKanye)
+    const { data, pending, error } = useAppSelector(kanyeQuoteSelector)
 
     return (
         <div>
@@ -12,7 +12,7 @@ const kanye: React.FC = () => {
             {pending && <p>loading...</p>}
             {data && <p>{data.quote}</p>}
             {error && <p>Oops, somehing when wrong...</p>}
-            <button onClick={() => dispatch(getKanyeQuote())}>Generate Kanye Quote</button>
+            <button disabled={pending} onClick={() => dispatch(getKanyeQuote())}>Generate Kanye Quote</button>
         </div>
     )
 }
